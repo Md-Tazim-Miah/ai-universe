@@ -16,15 +16,25 @@ const displayAiTools = (tools) => {
         toolDiv.classList.add("w-full", "rounded", "overflow-hidden", "shadow-lg", "mx-auto", "p-5");
         toolDiv.innerHTML = `
             <div class="w-full">
-                <img class="w-full h-52 object-cover rounded-xl" src="${tool.image || 'Image not found'}" alt="Tool Image" onerror="this.onerror=null; this.src='fallback.jpg';">
+                <img class="w-full h-52 object-cover rounded-xl" src="${tool.image}" alt="Tool Image" onerror="this.onerror=null; this.src='images/fallback.jpg';">
             </div>
-            <div class="w-full">
+            <div class="w-full mt-4">
+                <h2 class="font-bold text-2xl">Features</h2>
+                <ul class="list-decimal p-4 text-gray-500 font-semibold">
+                    <li>${tool.features[0] || 'N/A'}</li>
+                    <li>${tool.features[1] || 'N/A'}</li>
+                    <li>${tool.features[2] || 'N/A'}</li>
+                </ul>
+            </div>
+            <hr class="mt-5 mb-3">
+            <div class="flex justify-between items-center w-full">
                 <div>
-                    <div class="text-gray-600 font-bold text-3xl mb-2">${tool.name}</div>
+                    <div class="font-bold text-2xl mb-2">${tool.name}</div>
                     </p>
+                    <span class="text-sm text-gray-600 font-semibold"><span class="pe-1"><i class="fa-regular fa-calendar"></i></span> ${tool.published_in || 'Release date not available'}</span>
                 </div>
                 <div class="px-6 pt-4 pb-2">
-                    <a onclick="openModal(); loadMealsDetails(${tool.id})" href="#" class="text-yellow-600 font-semibold text-2xl"><i class="fa-solid fa-arrow-right"></i></a>
+                    <a onclick="openModal(); loadMealsDetails(${tool.id})" href="#" class="text-yellow-600 font-semibold text-2xl bg-red-50 px-3 py-1.5 rounded-full"><i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         `;
