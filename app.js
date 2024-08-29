@@ -130,9 +130,14 @@ const displayToolDetails = tool => {
             }" alt="Tool Image" onerror="this.onerror=null; this.src='images/fallback.jpg';">
             <h2 class="text-2xl font-bold mt-3 px-2">Hi, how are you doing today?</h2>
             <p class="text-sm text-gray-600 mt-3 px-10">I'm doing well, thank you for asking. How can I assist you today?</p>
-            <p class="absolute text-sm font-semibold text-white bg-red-500 px-4 py-1 top-3 right-4 rounded-md">${tool.accuracy.score * 100}% accuracy</p>
+            <p id="accuracy-score" class="absolute text-sm font-semibold text-white bg-red-500 px-4 py-1 top-3 right-4 rounded-md">${tool.accuracy.score * 100}% accuracy</p>
         </div>    
     `;
+    // Accuracy score functionalities
+    const accuracyScore = document.getElementById('accuracy-score');
+    if(tool.accuracy.score === null || tool.accuracy.score === 0){
+        accuracyScore.classList.add('hidden');
+    };
   };
 
   // Modal open function
