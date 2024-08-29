@@ -144,3 +144,25 @@ function openModal() {
 function closeModal() {
     document.getElementById('myModal').classList.add('hidden');
 }
+
+// Add an event listener to the "Sort By Date" button
+document.querySelector('#btn-sort-by-date').addEventListener('click', function () {
+    sortToolsByDate();
+});
+
+// Function to sort tools by date
+const sortToolsByDate = async () => {
+    try {
+        const url = `https://openapi.programming-hero.com/api/ai/tools`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // Sort the tools array by date in descending order (newest first)
+        const sortedTools = data.data.tools.sort((a, b) => new Date(b.published_in) - new Date(a.published_in));
+        
+        // Display the sorted tools
+        displayAiTools(sortedTools);
+    } catch (error) {
+        console.error('Error fetching AI tools:', error);
+    }
+};
